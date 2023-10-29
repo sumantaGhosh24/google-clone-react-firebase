@@ -1,4 +1,3 @@
-import React from "react";
 import {Link} from "react-router-dom";
 import {
   Description,
@@ -11,20 +10,15 @@ import {
 
 import "./SearchPage.css";
 import {useStateValue} from "../StateProvider";
-import useGoogleSearch from "../useGoogleSearch";
-// import Response from "../response";
+// import useGoogleSearch from "../useGoogleSearch";
+import Response from "../response";
 import Search from "../components/Search";
 
 const SearchPage = () => {
   const [{term}, dispatch] = useStateValue();
 
-  // enable on production
-  const {data} = useGoogleSearch(term);
-
-  // enable on development
-  //   const data = Response;
-
-  console.log(data);
+  // const data = useGoogleSearch(term);
+  const data = Response;
 
   return (
     <div className="searchPage">
@@ -83,7 +77,7 @@ const SearchPage = () => {
             {data?.searchInformation.formattedSearchTime} seconds) for {term}
           </p>
           {data?.items.map((item) => (
-            <div className="searchPage__result">
+            <div className="searchPage__result" key={item.link}>
               <a href={item.link}>
                 {item.pagemap?.cse_image?.length > 0 &&
                   item.pagemap?.cse_image[0]?.src && (

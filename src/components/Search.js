@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {Mic, SearchOutlined} from "@material-ui/icons";
 import {Button} from "@material-ui/core";
